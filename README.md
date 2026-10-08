@@ -1,35 +1,40 @@
 # Hoja de vida – Jesús Andrés Silva Plazas
 
-Sitio web estático (HTML + CSS + JavaScript, sin dependencias ni compilación) listo para GitHub Pages.
+Sitio estático hecho con [Astro](https://astro.build) y [Tailwind CSS](https://tailwindcss.com), publicado en GitHub Pages con GitHub Actions.
 
-## Archivos
+## Editar el contenido
 
-- `index.html` – contenido de la hoja de vida
-- `styles.css` – estilos (tema claro/oscuro automático y formato de impresión)
-- `script.js` – cambio de tema, botón de imprimir/PDF y menú activo
-- `.nojekyll` – indica a GitHub Pages que sirva los archivos tal cual
+Todo el texto de la hoja de vida está en `src/data/cv.ts`. Al modificarlo y hacer `git push` a `main`, el sitio se vuelve a publicar solo.
 
-## Publicar en GitHub Pages
+## Estructura
 
-1. Crear un repositorio en GitHub (por ejemplo `jesus-silva-cv`, o `<usuario>.github.io` para que quede en la raíz del dominio).
-2. Subir los archivos:
-   ```bash
-   git init
-   git add .
-   git commit -m "Hoja de vida"
-   git branch -M main
-   git remote add origin https://github.com/<usuario>/<repositorio>.git
-   git push -u origin main
-   ```
-3. En GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch**, rama `main`, carpeta `/ (root)` → **Save**.
-4. En uno o dos minutos el sitio estará en `https://<usuario>.github.io/<repositorio>/`.
-
-## Ver en local
-
-Abrir `index.html` directamente en el navegador, o:
-
-```bash
-python3 -m http.server 8000
+```
+src/data/cv.ts            contenido (perfil, experiencia, artículos, cursos…)
+src/pages/index.astro     página principal
+src/components/           encabezado, secciones, línea de tiempo, tablas
+src/layouts/Base.astro    <head>, fuentes y tema claro/oscuro
+src/styles/global.css     colores y estilos base (Tailwind v4)
+.github/workflows/deploy.yml   despliegue automático a GitHub Pages
 ```
 
-y visitar http://localhost:8000.
+## Desarrollo local
+
+```bash
+npm install
+npm run dev       # http://localhost:4321
+npm run build     # genera dist/
+npm run preview   # sirve dist/
+```
+
+## Publicar en GitHub Pages (una sola vez)
+
+1. Crear un repositorio **público** en GitHub (por ejemplo `jesus-silva-cv`) sin README.
+2. Subir el código:
+   ```bash
+   git remote add origin https://github.com/<usuario>/jesus-silva-cv.git
+   git push -u origin main
+   ```
+3. En el repositorio: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+4. En **Actions**, volver a ejecutar el flujo “Desplegar en GitHub Pages” si el primero falló por no tener Pages activado.
+
+El sitio queda en `https://<usuario>.github.io/jesus-silva-cv/`. La ruta base se calcula sola a partir del nombre del repositorio; si el repositorio se llama `<usuario>.github.io`, se publica en la raíz.

@@ -1,0 +1,93 @@
+---
+import { nav } from '../data/cv';
+---
+
+<header class="sticky top-0 z-40 border-b border-line bg-page shadow-[0_1px_8px_rgb(0_0_0/0.04)] print:hidden">
+  <div class="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4 sm:px-8 lg:h-16">
+    <a
+      href="#inicio"
+      aria-label="Inicio"
+      class="grid size-9 shrink-0 place-items-center rounded-xl bg-accent font-serif text-[15px] font-bold text-page no-underline hover:text-page"
+      >JS</a
+    >
+
+    <nav aria-label="Secciones" class="hidden flex-1 gap-1 lg:flex">
+      {nav.map((n) => <a href={`#${n.id}`} data-nav class="nav-link">{n.label}</a>)}
+    </nav>
+    <span class="flex-1 lg:hidden"></span>
+
+    <button id="themeToggle" type="button" class="icon-btn" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"></path></svg>
+    </button>
+    <button id="printBtn" type="button" class="icon-btn" aria-label="Imprimir o guardar como PDF" title="Imprimir / PDF">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a1 1 0 0 1-1-1v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1h-2M6 14h12v7H6z"></path></svg>
+    </button>
+  </div>
+
+  <!-- Menú móvil: fila deslizable horizontalmente -->
+  <nav
+    id="mobileNav"
+    aria-label="Secciones"
+    class="flex gap-1 overflow-x-auto border-t border-line px-3 py-2 [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden"
+  >
+    {nav.map((n) => <a href={`#${n.id}`} data-nav class="nav-link shrink-0">{n.label}</a>)}
+  </nav>
+</header>
+
+<style>
+  @reference "../styles/global.css";
+  .nav-link {
+    @apply rounded-lg px-3 py-1.5 text-sm font-medium text-muted no-underline transition-colors hover:bg-page-alt hover:text-ink;
+  }
+  .nav-link.is-active {
+    @apply bg-accent-soft text-accent-ink;
+  }
+  .icon-btn {
+    @apply grid size-9 shrink-0 cursor-pointer place-items-center rounded-xl border border-line bg-surface text-ink transition-colors hover:border-accent hover:text-accent;
+  }
+  .icon-btn svg {
+    @apply size-[18px] fill-none stroke-current stroke-[1.8];
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>
+
+<script>
+  const root = document.documentElement;
+
+  document.getElementById('themeToggle')?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch {}
+  });
+
+  document.getElementById('printBtn')?.addEventListener('click', () => window.print());
+
+  // Resalta la sección visible. Solo se desplaza el menú móvil en horizontal
+  // (scrollLeft), así nunca interrumpe el desplazamiento vertical de la página.
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-nav]')];
+  const mobileNav = document.getElementById('mobileNav');
+  let activeId = '';
+
+  const setActive = (id: string) => {
+    if (id === activeId) return;
+    activeId = id;
+    for (const a of links) {
+      const on = a.hash === `#${id}`;
+      a.classList.toggle('is-active', on);
+      if (on) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+      if (on && mobileNav && mobileNav.contains(a) && mobileNav.scrollWidth > mobileNav.clientWidth) {
+        mobileNav.scrollLeft = a.offsetLeft - (mobileNav.clientWidth - a.offsetWidth) / 2;
+      }
+    }
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) if (e.isIntersecting) setActive(e.target.id);
+    },
+    { rootMargin: '-40% 0px -55% 0px' },
+  );
+  document.querySelectorAll('main section[id]').forEach((s) => observer.observe(s));
+</script>

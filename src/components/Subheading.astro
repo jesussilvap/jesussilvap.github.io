@@ -1,0 +1,6 @@
+---
+interface Props { first?: boolean }
+const { first = false } = Astro.props;
+---
+
+<h3 class:list={['mb-4 font-serif text-xl font-semibold', first ? 'mt-0' : 'mt-12']}><slot /></h3>

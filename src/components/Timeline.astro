@@ -1,0 +1,38 @@
+---
+import type { Entry } from '../data/cv';
+
+interface Props { items: Entry[] }
+const { items } = Astro.props;
+---
+
+<ol class="relative">
+  {
+    items.map((item, i) => (
+      <li class="relative grid gap-1.5 pb-10 pl-8 last:pb-0 lg:grid-cols-[11rem_1fr] lg:gap-8 lg:pl-0">
+        {/* línea vertical */}
+        {i < items.length - 1 && (
+          <span aria-hidden="true" class="absolute bottom-0 left-[5px] top-3 w-0.5 bg-line lg:left-[12.3rem]" />
+        )}
+        {/* punto */}
+        <span
+          aria-hidden="true"
+          class:list={[
+            'absolute left-0 top-1.5 size-3 rounded-full border-2 border-accent lg:left-[12rem]',
+            item.current ? 'bg-accent ring-4 ring-accent-soft' : 'bg-page',
+          ]}
+        />
+        <p class="text-sm font-semibold text-accent lg:pt-0.5 lg:text-right">{item.when}</p>
+        <div class="lg:pl-8">
+          <h3 class="font-serif text-xl font-semibold leading-snug">{item.title}</h3>
+          <p class="mb-3 text-[15px] text-muted">{item.org}</p>
+          {item.intro && <p class="mb-3">{item.intro}</p>}
+          {item.points && (
+            <ul class="bullets">
+              {item.points.map((p) => <li set:html={p} />)}
+            </ul>
+          )}
+        </div>
+      </li>
+    ))
+  }
+</ol>
