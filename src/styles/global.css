@@ -9,26 +9,26 @@
   --color-page: #fbfaf7;
   --color-page-alt: #f2efe8;
   --color-surface: #ffffff;
-  --color-ink: #1c2321;
-  --color-muted: #5d6662;
+  --color-ink: #1b2231;
+  --color-muted: #5b6372;
   --color-line: #e2ddd2;
-  --color-accent: #0f5c4d;
-  --color-accent-soft: #dcebe6;
-  --color-accent-ink: #0b4a3e;
+  --color-accent: #1d4ea8;
+  --color-accent-soft: #dfe8f8;
+  --color-accent-ink: #173f87;
   --color-gold: #b07a1f;
 }
 
 /* Tema oscuro: se redefinen los mismos tokens */
 [data-theme="dark"] {
-  --color-page: #111614;
-  --color-page-alt: #161d1a;
-  --color-surface: #1b2420;
-  --color-ink: #e7ece9;
-  --color-muted: #9aa7a1;
-  --color-line: #2a3530;
-  --color-accent: #5fc4a8;
-  --color-accent-soft: #1f3a32;
-  --color-accent-ink: #8adbc4;
+  --color-page: #0f131a;
+  --color-page-alt: #141a23;
+  --color-surface: #1a212c;
+  --color-ink: #e6eaf1;
+  --color-muted: #9aa5b4;
+  --color-line: #283141;
+  --color-accent: #7aa8ff;
+  --color-accent-soft: #1c2b47;
+  --color-accent-ink: #a8c5ff;
   --color-gold: #e0b45e;
   color-scheme: dark;
 }
@@ -71,8 +71,8 @@
 @media print {
   [data-theme="dark"] {
     --color-page: #fff; --color-page-alt: #fff; --color-surface: #fff; --color-ink: #000;
-    --color-muted: #444; --color-line: #ccc; --color-accent: #0f5c4d;
-    --color-accent-soft: #eef4f2; --color-accent-ink: #0b4a3e; --color-gold: #b07a1f;
+    --color-muted: #444; --color-line: #ccc; --color-accent: #1d4ea8;
+    --color-accent-soft: #eef3fb; --color-accent-ink: #173f87; --color-gold: #b07a1f;
   }
   body { font-size: 11pt; }
   .card, li, tr { break-inside: avoid; }
