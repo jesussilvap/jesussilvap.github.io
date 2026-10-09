@@ -15,7 +15,6 @@ const icons = {
   mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
   phone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
   id: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M8 6V4h8v2M3 12h18"/>',
-  download: '<path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/>',
 };
 const contact = [
   { icon: icons.pin, text: profile.location },
@@ -33,23 +32,36 @@ const contact = [
 
   <main id="contenido">
     <!-- Inicio -->
-    <section id="inicio" class="border-b border-line py-14 lg:py-24">
-      <div class="mx-auto grid max-w-6xl gap-10 px-4 sm:px-8 lg:grid-cols-[1.6fr_1fr] lg:items-end">
-        <div class="grid gap-6 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-8">
+    <section id="inicio" class="border-b border-line py-12 lg:py-20">
+      <div class="mx-auto grid max-w-6xl gap-10 px-4 sm:px-8 lg:grid-cols-[1.5fr_1fr] lg:items-center lg:gap-12">
+        <!-- Columna derecha en escritorio: foto + cifras. En celular la foto va primero. -->
+        <div class="contents lg:col-start-2 lg:row-start-1 lg:grid lg:gap-6">
           <img
             src={`${base}${profile.photo}`}
             alt={`Fotografía de ${profile.name}`}
             width="428"
             height="522"
-            class="w-32 rounded-2xl border border-line object-cover shadow-sm sm:w-44"
+            class="order-first mx-auto w-40 rounded-2xl border border-line object-cover shadow-sm sm:w-48 lg:order-none lg:w-52"
           />
-          <div>
+          <dl class="order-last grid grid-cols-2 gap-3 lg:order-none" aria-label="Cifras destacadas">
+            {
+              stats.map((s) => (
+                <div class="card !p-4 text-center sm:!p-5 lg:text-left">
+                  <dt class="text-[13px] leading-snug text-muted">{s.label}</dt>
+                  <dd class="mt-1.5 font-serif text-3xl font-bold text-accent">{s.value}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+
+        <div class="text-center lg:col-start-1 lg:row-start-1 lg:text-left">
           <p class="mb-3.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-accent">Hoja de vida</p>
           <h1 class="mb-4 font-serif text-[clamp(2.4rem,7vw,4.2rem)] leading-[1.04] font-bold tracking-tight">
             Jesús Andrés<br />Silva Plazas
           </h1>
-          <p class="mb-7 max-w-[34ch] text-lg text-muted sm:text-xl">{profile.role}</p>
-          <ul class="grid gap-2.5">
+          <p class="mx-auto mb-7 max-w-[34ch] text-lg text-muted sm:text-xl lg:mx-0">{profile.role}</p>
+          <ul class="mx-auto grid w-fit gap-2.5 text-left lg:mx-0">
             {
               contact.map((c) => (
                 <li class="flex items-center gap-2.5 text-[15px] break-words text-muted">
@@ -66,26 +78,7 @@ const contact = [
               ))
             }
           </ul>
-          <a
-            href={`${base}${profile.pdf}`}
-            download
-            class="mt-7 inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-[15px] font-semibold text-white no-underline shadow-sm transition-colors hover:bg-accent-ink hover:text-white print:hidden"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-[18px] fill-none stroke-current stroke-2" stroke-linecap="round" stroke-linejoin="round" set:html={icons.download} />
-            Descargar hoja de vida (PDF)
-          </a>
-          </div>
         </div>
-        <dl class="grid grid-cols-2 gap-3" aria-label="Cifras destacadas">
-          {
-            stats.map((s) => (
-              <div class="card !p-4 sm:!p-5">
-                <dt class="text-[13px] leading-snug text-muted">{s.label}</dt>
-                <dd class="mt-1.5 font-serif text-3xl font-bold text-accent">{s.value}</dd>
-              </div>
-            ))
-          }
-        </dl>
       </div>
     </section>
 
