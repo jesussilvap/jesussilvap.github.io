@@ -1,5 +1,7 @@
 ---
-import { nav } from '../data/cv';
+import { nav, profile } from '../data/cv';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <header class="sticky top-0 z-40 border-b border-line bg-page shadow-[0_1px_8px_rgb(0_0_0/0.04)] print:hidden">
@@ -19,9 +21,9 @@ import { nav } from '../data/cv';
     <button id="themeToggle" type="button" class="icon-btn" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"></path></svg>
     </button>
-    <button id="printBtn" type="button" class="icon-btn" aria-label="Imprimir o guardar como PDF" title="Imprimir / PDF">
+    <a href={`${base}${profile.pdf}`} download class="icon-btn no-underline" aria-label="Descargar hoja de vida en PDF" title="Descargar hoja de vida (PDF)">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a1 1 0 0 1-1-1v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1h-2M6 14h12v7H6z"></path></svg>
-    </button>
+    </a>
   </div>
 
   <!-- Menú móvil: fila deslizable horizontalmente -->
@@ -60,8 +62,6 @@ import { nav } from '../data/cv';
     root.dataset.theme = next;
     try { localStorage.setItem('theme', next); } catch {}
   });
-
-  document.getElementById('printBtn')?.addEventListener('click', () => window.print());
 
   // Resalta la sección visible. Solo se desplaza el menú móvil en horizontal
   // (scrollLeft), así nunca interrumpe el desplazamiento vertical de la página.

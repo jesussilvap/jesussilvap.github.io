@@ -7,9 +7,12 @@ export const profile = {
   email: 'jesus.silvap@gmail.com',
   phone: '+57 311 454 3876',
   license: 'Tarjeta profesional 70255-229147 TLM',
+  photo: 'foto.jpg',
+  pdf: 'hoja-de-vida-jesus-silva-plazas.pdf',
+  cvlac: 'https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000048274',
   summary: [
     'Ingeniero de Sistemas y Magíster en Gestión de la Tecnología Educativa, con trayectoria docente desde 2012 como docente de Tecnología e Informática e instructor SENA en la especialidad de Software. Combina la formación por proyectos y la evaluación por resultados de aprendizaje con experiencia actual en el desarrollo y puesta en producción de sistemas de información para entidades públicas.',
-    'Integrante del grupo de investigación <strong>INNOVAGRO</strong>, reconocido por Minciencias, y fundador del semillero <strong>MetaTIC</strong>. Cuenta con cinco artículos publicados, ponencias en congresos internacionales, cinco proyectos de investigación liderados en SENNOVA y experiencia como par evaluador de RedCOLSI. Recibió la Exaltación al Mérito Investigativo de la Universidad Cooperativa de Colombia (2020).',
+    'Investigador, reconocido por Minciencias, y fundador del semillero <strong>MetaTIC</strong>. Cuenta con cinco artículos publicados, ponencias en congresos internacionales, cinco proyectos de investigación liderados en SENNOVA y experiencia como par evaluador de RedCOLSI. Recibió la Exaltación al Mérito Investigativo de la Universidad Cooperativa de Colombia (2020).',
   ],
   purpose:
     'Su propósito es llevar al aula universitaria una formación en ingeniería conectada con problemas reales del territorio.',
@@ -37,7 +40,6 @@ export const education = [
     title: 'Magíster en Gestión de la Tecnología Educativa',
     org: 'Universidad de Santander (UDES), Bucaramanga',
     meta: 'SNIES 91341 · Grado: 22 de julio de 2020',
-    note: 'Trabajo de grado: <em>Google Classroom como herramienta de colaboración y productividad en el curso de ofimática de formación complementaria.</em>',
   },
   {
     tag: 'Especialización tecnológica · 2015 – 2016',
@@ -48,7 +50,6 @@ export const education = [
     tag: 'Pregrado · 2007 – 2012',
     title: 'Ingeniero de Sistemas',
     org: 'Universidad Cooperativa de Colombia, Neiva',
-    note: 'Trabajo de grado: <em>Sistemas de clientes livianos para entornos universitarios con licenciamiento libre.</em>',
   },
 ];
 
@@ -131,12 +132,15 @@ export const work: Entry[] = [
     ],
   },
   { when: 'feb. 2012 – ene. 2014', title: 'Desarrollador', org: 'JJ System & Netw@re, Garzón' },
-  { when: 'oct. 2010 – oct. 2011', title: 'Jefe de soporte', org: 'Computosystem.net, Neiva' },
 ];
 
 export const research = {
   intro:
     'Integrante del grupo de investigación <strong>INNOVAGRO C.A.D.P.H</strong> (código COL0150674, reconocido por Minciencias) desde junio de 2016, líder del semillero <strong>MetaTIC</strong> desde 2017 y par evaluador de RedCOLSI.',
+  areas:
+    'Ingeniería y Tecnología – Ingenierías Eléctrica, Electrónica e Informática (hardware y arquitectura de computadores; automatización y sistemas de control; ingeniería de sistemas y comunicaciones).',
+  articlesNote:
+    'Todos en la <em>Revista de Investigaciones Agroempresariales</em> (SENA, ISSN 2500-4468). Los cinco artículos figuran en el CvLAC como productos avalados y validados para la última Convocatoria Nacional de Reconocimiento y Medición de Grupos e Investigadores de Minciencias.',
   awards: [
     {
       tag: '4 de diciembre de 2020',
@@ -151,13 +155,12 @@ export const research = {
       note: 'En representación del Centro Agroempresarial y Desarrollo Pecuario del Huila.',
     },
   ],
-  // Agregue `url` a cada artículo para enlazarlo.
   articles: [
-    { year: '2019', title: 'Aplicación móvil para el aprendizaje del inglés en el sector caficultor del Huila', authors: 'Silva Plazas, J. A.; Conde Urueña, C. L.; Cubillos Martínez, A.', ref: 'v. 6, pp. 47–57', url: '' },
-    { year: '2018', title: 'Sistema de información geográfico del Centro Agroempresarial y Desarrollo Pecuario del Huila para el análisis cartográfico de sus unidades productivas (SIGCADPH)', authors: 'Silva Plazas, J. A.', ref: 'v. 5, pp. 60–70', url: '' },
-    { year: '2017', title: 'Evolución del turismo como apuesta potencial para el centro del Huila', authors: 'Manrique Cortés, A. M.; Silva Plazas, J. A.', ref: 'v. 4, pp. 30–42', url: '' },
-    { year: '2017', title: 'Automatización de invernadero para producción agrícola con tecnología de punta a bajo costo', authors: 'Rincón Vieda, P. A.; Silva Plazas, J. A.; Torres Camacho, A. F.', ref: 'v. 3, pp. 9–23', url: '' },
-    { year: '2016', title: 'Mipymes de Garzón ingresan al negocio del comercio electrónico', authors: 'Rincón Vieda, P. A.; Silva Plazas, J. A.', ref: 'v. 2, pp. 92–104', url: '' },
+    { year: '2019', title: 'Aplicación móvil para el aprendizaje del inglés en el sector caficultor del Huila', authors: 'Silva Plazas, J. A.; Conde Urueña, C. L.; Cubillos Martínez, A.', ref: 'v. 6, pp. 47–57', type: 'Artículo en revista de divulgación', url: 'https://revistas.sena.edu.co/index.php/riag/article/view/4664' },
+    { year: '2018', title: 'Sistema de información geográfico del Centro Agroempresarial y Desarrollo Pecuario del Huila para el análisis cartográfico de sus unidades productivas (SIGCADPH)', authors: 'Silva Plazas, J. A.', ref: 'v. 5, pp. 60–70', type: 'Artículo en revista de divulgación', url: 'https://revistas.sena.edu.co/index.php/riag/article/view/4692' },
+    { year: '2017', title: 'Evolución del turismo como apuesta potencial para el centro del Huila', authors: 'Manrique Cortés, A. M.; Silva Plazas, J. A.', ref: 'v. 4, pp. 30–42', type: 'Artículo publicado en revista especializada', url: 'https://revistas.sena.edu.co/index.php/riag/article/view/1458/1582' },
+    { year: '2017', title: 'Automatización de invernadero para producción agrícola con tecnología de punta a bajo costo', authors: 'Rincón Vieda, P. A.; Silva Plazas, J. A.; Torres Camacho, A. F.', ref: 'v. 3, pp. 9–23', type: 'Artículo en revista de divulgación', url: 'https://revistas.sena.edu.co/index.php/riag/article/view/1419/1523' },
+    { year: '2016', title: 'Mipymes de Garzón ingresan al negocio del comercio electrónico', authors: 'Rincón Vieda, P. A.; Silva Plazas, J. A.', ref: 'v. 2, pp. 92–104', type: 'Artículo en revista de divulgación', url: 'https://revistas.sena.edu.co/index.php/riag/article/view/838/920' },
   ],
   projects: [
     { when: '2021', text: 'Actualización e implementación de una aplicación móvil para la promoción de destinos turísticos del Huila – CenturHuila 3.0' },
@@ -171,13 +174,13 @@ export const research = {
     '<em>Sistema de automatización y monitoreo para ambientes controlados para producción agrícola y pecuaria</em> (póster) — Congreso Internacional de Investigación TEINNOVA, Pereira, 28 y 29 de septiembre de 2017.',
   ],
   reviewer: [
-    { when: 'oct. 2023', text: 'Comité Académico Evaluador – XXVI Encuentro Nacional y XX Encuentro Internacional de Semilleros de Investigación ENISI, RedCOLSI Nodo Bolívar, Cartagena.' },
+    { when: '2023', text: '<strong>8 proyectos evaluados</strong> – RedCOLSI Nodo Bolívar, incluido el Comité Académico Evaluador del XXVI Encuentro Nacional y XX Encuentro Internacional de Semilleros ENISI, Cartagena, octubre de 2023.' },
     { when: 'nov. 2020', text: 'Evaluador – Encuentro Internacional de Semilleros “Resiliencia Organizacional y Transformación Digital en Tiempos de Crisis”, Semillero Prexia, Universidad Nacional de Colombia, Medellín.' },
-    { when: 'oct. 2019', text: 'Par evaluador de proyectos – RedCOLSI Nodo Cesar.' },
+    { when: 'oct. 2019', text: '<strong>7 proyectos evaluados</strong> – RedCOLSI Nodo Cesar.' },
   ],
   software: [
     { tag: '2026', title: 'SITT Garzón', note: 'Sistema de información de la Secretaría de Tránsito y Transporte de Garzón.' },
-    { tag: '2016 · v3.0 en 2020', title: 'CenturHuila', note: 'Aplicación móvil de turismo del Huila, publicada en Google Play.' },
+    { tag: '2016 · v3.0 en 2020', title: 'CenturHuila', note: 'Aplicación móvil de turismo del Huila, publicada en Google Play.', url: 'https://play.google.com/store/apps/details?id=com.ycjn.centurhuila' },
     { tag: 'ArcGIS', title: 'SIGCADPH', note: 'Sistema de información geográfica web para el análisis cartográfico de unidades productivas.' },
     { tag: '2018 · CvLAC', title: 'Software a la medida para las mipymes de Garzón', note: 'Aplicativo registrado como producción técnica en CvLAC.' },
   ],
@@ -191,10 +194,6 @@ export const courses = {
     { year: '2016', name: 'Orientación de la formación profesional', inst: 'SENA', hours: '80' },
     { year: '2016', name: 'Diseño de estrategias didácticas para la formación profesional integral', inst: 'SENA', hours: '50' },
     { year: '2016', name: 'Manejo de ambientes virtuales de aprendizaje', inst: 'SENA', hours: '30' },
-    { year: '2015', name: 'Orientación de procesos de formación por proyectos con técnicas didácticas activas', inst: 'SENA', hours: '220' },
-    { year: '2015', name: 'Competencia laboral: Orientar procesos formativos presenciales con base en planes de formación concertados', inst: 'SENA', hours: '—' },
-    { year: '2014', name: 'Diplomado TIC y Educación', inst: 'Fundación Universitaria Católica del Norte', hours: '162' },
-    { year: '2014', name: 'Formación tecnopedagógica en ambientes virtuales de aprendizaje Blackboard 9.1', inst: 'SENA', hours: '60' },
   ],
   tech: [
     { year: '2024', name: 'CCNA v7: Switching, Routing and Wireless Essentials (credencial de nivel instructor)', inst: 'Cisco Networking Academy – SENA, Centro de Entrenamiento de Instructores', hours: '—' },
@@ -206,7 +205,6 @@ export const courses = {
     { year: '2021', name: 'Estructuración de proyectos de investigación', inst: 'SENA', hours: '80' },
     { year: '2018', name: 'Introducción a los sistemas de información geográfica', inst: 'SENA', hours: '80' },
     { year: '2016', name: 'Herramientas metodológicas en investigación: procesos de ciencia, tecnología e innovación', inst: 'SENA', hours: '40' },
-    { year: '2015', name: 'Ciudadano Digital', inst: 'Ministerio TIC', hours: '48' },
   ],
 };
 
@@ -220,6 +218,11 @@ export const skills = [
   { group: 'Gestión TI pública', items: ['PETI', 'Seguridad y privacidad de la información', 'Ley 1712 de 2014', 'RUNT', 'SIMIT'], wide: true },
 ];
 
+export const languages = [
+  { name: 'Español', level: 'Nativo' },
+  { name: 'Inglés', level: 'Básico' },
+];
+
 export const nav = [
   { id: 'perfil', label: 'Perfil' },
   { id: 'formacion', label: 'Formación' },
@@ -228,4 +231,5 @@ export const nav = [
   { id: 'investigacion', label: 'Investigación' },
   { id: 'complementaria', label: 'Cursos' },
   { id: 'competencias', label: 'Competencias' },
+  { id: 'idiomas', label: 'Idiomas' },
 ];
