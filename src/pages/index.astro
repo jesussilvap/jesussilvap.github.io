@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
+import BackToTop from '../components/BackToTop.astro';
 import Section from '../components/Section.astro';
 import Subheading from '../components/Subheading.astro';
 import Timeline from '../components/Timeline.astro';
@@ -231,10 +232,12 @@ const contact = [
     </Section>
   </main>
 
-  <footer class="border-t border-line py-8 text-[15px] text-muted">
+  <footer class="border-t border-line pt-8 pb-24 text-[15px] text-muted">
     <div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-x-6 gap-y-2 px-4 sm:px-8">
       <p><strong>Referencias</strong> disponibles a solicitud.</p>
       <p><a href={`mailto:${profile.email}`}>{profile.email}</a> · <a href={`${base}${profile.pdf}`} download>Descargar PDF</a></p>
     </div>
   </footer>
+
+  <BackToTop />
 </Base>

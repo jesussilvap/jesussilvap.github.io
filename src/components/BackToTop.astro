@@ -1,0 +1,29 @@
+<button
+  id="backToTop"
+  type="button"
+  aria-label="Volver al inicio"
+  title="Volver al inicio"
+  class="fixed right-4 bottom-4 z-40 grid size-12 translate-y-4 cursor-pointer place-items-center rounded-full bg-accent text-white opacity-0 shadow-lg ring-1 ring-black/5 transition-all duration-300 pointer-events-none hover:bg-accent-ink focus-visible:outline-offset-4 data-[visible=true]:pointer-events-auto data-[visible=true]:translate-y-0 data-[visible=true]:opacity-100 sm:right-6 sm:bottom-6 print:hidden"
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[2.2]" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5m0 0-6 6m6-6 6 6"></path>
+  </svg>
+</button>
+
+<script>
+  const btn = document.getElementById('backToTop');
+  const hero = document.getElementById('inicio');
+
+  if (btn && hero) {
+    // Se muestra cuando la cabecera ya no está en pantalla
+    new IntersectionObserver(([entry]) => {
+      btn.dataset.visible = String(!entry.isIntersecting);
+    }).observe(hero);
+
+    btn.addEventListener('click', () => {
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      document.querySelector<HTMLElement>('header a')?.focus({ preventScroll: true });
+    });
+  }
+</script>
